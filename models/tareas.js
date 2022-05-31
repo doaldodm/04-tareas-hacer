@@ -4,16 +4,22 @@ class Tareas {
 	_listado = {};
 
 	get listadoArr() {
-        const listado =[];
-        Object.keys(this._listado).forEach(key => {
-            listado.push(this._listado[key]);
-        })
+		const listado = [];
+		Object.keys(this._listado).forEach((key) => {
+			listado.push(this._listado[key]);
+		});
 
-        return listado;
-    }
+		return listado;
+	}
 
 	constructor() {
 		this._listado = {};
+	}
+
+	cargarTareaFromArray(tareas = []) {
+		tareas.forEach((tarea) => {
+			this.crearTarea(tarea.desc);
+		});
 	}
 
 	crearTarea(desc = "") {
