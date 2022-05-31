@@ -5,14 +5,12 @@ const Tareas = require("./models/tareas");
 console.clear();
 
 const main = async () => {
-	console.log("Starting app...".green);
-
 	let opt = "";
 	const tareas = new Tareas();
 
 	do {
+		//imprimir menu
 		opt = await inquirerMenu();
-
 		switch (opt) {
 			case "1":
 				const desc = await leerInput("Ingrese la descripción de la tarea: ");
@@ -20,11 +18,9 @@ const main = async () => {
 				break;
 
 			case "2":
-				console.log(tareas._listado);
+				console.log(tareas.listadoArr);
 				break;
 		}
-
-		console.log({ opt });
 
 		await pausa();
 	} while (opt !== "0");
