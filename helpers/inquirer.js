@@ -7,12 +7,12 @@ const preguntas = [
 		name: "opcion",
 		message: "Que desea hacer?",
 		choices: [
-			{ name: `${"1.".green} Crear una nueva tarea`, value: 1 },
-			{ name: `${"2.".green} Listar tareas`, value: 2 },
-			{ name: `${"3.".green} Listar tareas completadas`, value: 3 },
-			{ name: `${"4.".green} Listar tareas pendientes`, value: 4 },
-			{ name: `${"5.".green} Completar tareas`, value: 5 },
-			{ name: `${"6.".green} Borrar tarea`, value: 6 },
+			{ name: `${"1.".green} Crear una nueva tarea`, value: "1" },
+			{ name: `${"2.".green} Listar tareas`, value: "2" },
+			{ name: `${"3.".green} Listar tareas completadas`, value: "3" },
+			{ name: `${"4.".green} Listar tareas pendientes`, value: "4" },
+			{ name: `${"5.".green} Completar tareas`, value: "5" },
+			{ name: `${"6.".green} Borrar tarea`, value: "6" },
 			{ name: `${"7.".green} Salir`, value: "0" },
 		],
 	},
@@ -41,4 +41,23 @@ const pausa = async () => {
 	await inquirer.prompt(question);
 };
 
-module.exports = { inquirerMenu, pausa };
+const leerInput = async (message) => {
+	const question = [
+		{
+			type: "input",
+			name: "desc",
+			message,
+			validate(value) {
+				if (!value) {
+					return "Por favor ingrese un valor";
+				}
+				return true;
+			},
+		},
+	];
+
+	const { desc } = await inquirer.prompt(question);
+	return desc;
+};
+
+module.exports = { inquirerMenu, pausa, leerInput };
