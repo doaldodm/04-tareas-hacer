@@ -10,8 +10,9 @@ const leerDB = () => {
 		return null;
 	}
 
-	const info = fs.readFileSync(archivo, "utf-8");
-	return JSON.parse(info);
+	const info = fs.readFileSync(archivo, { encoding: "utf-8" });
+	const data = JSON.parse(info);
+	return data;
 };
 
 module.exports = { guardarDB, leerDB };
