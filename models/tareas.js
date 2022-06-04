@@ -38,6 +38,30 @@ class Tareas {
 			);
 		});
 	}
+
+	listarPendientesCompletadas(completadas = true) {
+		let idx = 1;
+		this.listadoArr.forEach((tarea) => {
+			if (completadas) {
+				if (tarea.completadaEn) {
+					const { desc, completadaEn } = tarea;
+					console.log(
+						`${(idx + ".").green} ${desc} :: ${
+							"Completada en:".green
+						} ${completadaEn}`
+					);
+					idx++;
+				}
+			} else {
+				if (!tarea.completadaEn) {
+					console.log(
+						`${(idx + ".").green} ${tarea.desc} :: ${"Pendiente".red}`
+					);
+					idx++;
+				}
+			}
+		});
+	}
 }
 
 module.exports = Tareas;
