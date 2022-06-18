@@ -1,10 +1,6 @@
 const Tarea = require("./tarea");
 
 class Tareas {
-	_listado = {
-		abc: 123,
-	};
-
 	get listadoArr() {
 		const listado = [];
 		Object.keys(this._listado).forEach((key) => {
@@ -18,15 +14,21 @@ class Tareas {
 		this._listado = {};
 	}
 
-	cargarTareaFromArray(tareas = []) {
-		tareas.forEach((tarea) => {
-			this._listado[tarea.id] = tarea;
-		});
+	borrarTarea(id) {
+		if (this._listado[id]) {
+			delete this._listado[id];
+		}
 	}
 
 	crearTarea(desc = "") {
 		const tarea = new Tarea(desc);
 		this._listado[tarea.id] = tarea;
+	}
+
+	cargarTareaFromArray(tareas = []) {
+		tareas.forEach((tarea) => {
+			this._listado[tarea.id] = tarea;
+		});
 	}
 
 	listadoCompleto() {
