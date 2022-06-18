@@ -7,8 +7,8 @@ class Tarea {
 
 	constructor(desc) {
 		this.desc = desc;
-        this.id = uuidv4();
-        this.completadaEn = null;
+		this.id = uuidv4();
+		this.completadaEn = null;
 	}
 }
 

@@ -16,4 +16,3 @@ const leerDB = () => {
 };
 
 module.exports = { guardarDB, leerDB };
- 
