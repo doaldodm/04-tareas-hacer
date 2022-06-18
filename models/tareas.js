@@ -72,6 +72,12 @@ class Tareas {
 				tarea.completadaEn = new Date().toISOString();
 			}
 		});
+
+		this.listadoArr.forEach((tarea) => {
+			if (!ids.includes(tarea.id)) {
+				tarea.completadaEn = null;
+			}
+		});
 	}
 }
 
