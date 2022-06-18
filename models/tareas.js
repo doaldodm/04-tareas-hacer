@@ -48,9 +48,9 @@ class Tareas {
 				if (tarea.completadaEn) {
 					const { desc, completadaEn } = tarea;
 					console.log(
-						`${(idx + ".").green} ${desc} :: ${
-							"Completada en:".green
-						} ${completadaEn}`
+						`${(idx + ".").green} ${desc} :: ${"Completada en:"} ${
+							`${completadaEn}`.green
+						}`
 					);
 					idx++;
 				}
@@ -61,6 +61,15 @@ class Tareas {
 					);
 					idx++;
 				}
+			}
+		});
+	}
+
+	toggleCompletada(ids) {
+		ids.forEach((id) => {
+			const tarea = this._listado[id];
+			if (!tarea.completadaEn) {
+				tarea.completadaEn = new Date().toISOString();
 			}
 		});
 	}

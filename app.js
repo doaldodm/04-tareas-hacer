@@ -43,7 +43,7 @@ const main = async () => {
 
 			case "5":
 				const ids = await mostrarListadoChecklist(tareas.listadoArr);
-				console.log(ids);
+				tareas.toggleCompletada(ids);
 				break;
 
 			case "6": //borrar tarea
